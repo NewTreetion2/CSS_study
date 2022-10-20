@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .box {
+        width: 95px;
+        height: 95px;
+        line-height: 95px;
+        color: white;
+        text-align: center;
+        border-radius: 6px;
+      }
+      /* 가로 95 높이 95의 박스안에 
+      글자크기는 위로 95인 하얀색 글씨가 가운데에 오는 
+      모서리가 6px만큼 둥근 box의 class */
+
+      .original {
+        margin: 30px;
+        border: 1px dashed #cecfd5;
+        background: #eaeaed;
+        float: left;
+      }
+      /* margin의 크기가 30px인 왼쪽 정렬의 흰색 박스이며 1px만큼 둥글고 
+      테두리가 긴 점선인 class original */
+
+      .child {
+        background: #2db34a;
+        cursor: pointer;
+      }
+      /* child를 상속받으면 background가 연두색이 되고 
+      올려놓은 마우스커서가 pointer로 변함*/
+
+      .translate {
+        transform: translate(10px, 50px);
+      }
+      /* translate를 상속받으면 가로 10px, 세로 50px만큼 트랜스폼(이동)함 */
+
+      .scale {
+        transform: scale(0.75);
+      }
+      /* scale을 상속받으면 0.75배 축소함 */
+      .skew {
+        transform: skew(5deg, -20deg);
+      }
+      /* skew를 상속받으면 x축으로 5deg, y축으로 -20deg 기울임
+      여기서 deg는 각도를 의미 */
+      .rotate {
+        transform: rotate(70deg);
+      }
+      /* rotate를 상속받으면 70deg만큼 회전시킴 */
+
+      .complex {
+        transform: scale(0.5) rotate(20deg);
+      }
+      /* complex를 상속받으면 0.5배 축소시키고 20도 기울임 */
+
+      /* Animation Effect */
+      /* .translate:hover {
+        transition: transform 1s linear;
+        transform: translate(0px, 0px);
+      } 이럴 경우 애니메이션은 아니지만 트랜지션이 적용돼 
+      이동하는 모습이 애니메이션처럼 나옴*/
+
+      .translate:hover {
+        animation: translate 1s linear forwards;
+      }
+      @keyframes translate {
+        100% {
+          transform: translate(0px, 0px);
+        }
+      }
+      /* 이렇게 적용한다면 애니메이션 이펙트가 적용됨 */
+      .scale:hover {
+        transition: transform 1s linear;
+        transform: scale(1);
+      }
+      .skew:hover {
+        transition: transform 1s linear;
+        transform: skew(0, 0);
+      }
+      .rotate:hover {
+        transition: transform 1s linear;
+        transform: rotate(0);
+      }
+      .complex:hover {
+        transition: transform 1s linear;
+        transform: scale(1) rotate(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="original box">
+      <div class="child box translate">translate</div>
+    </div>
+    <div class="original box">
+      <div class="child box scale">scale</div>
+    </div>
+    <div class="original box">
+      <div class="child box skew">skew</div>
+    </div>
+    <div class="original box">
+      <div class="child box rotate">rotate</div>
+    </div>
+    <div class="original box">
+      <div class="child box complex">complex</div>
+    </div>
+  </body>
+</html>
